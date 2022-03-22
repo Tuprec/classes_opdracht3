@@ -12,10 +12,10 @@ namespace classes_opdracht3
             int intAantal = 0;
             List<CD> cden = new List<CD>();
 
+            Console.WriteLine("Geef een liedje in: ");
+
             do
-            {   
-                Console.Write("Wilt u een liedje toevoegen aan de CD (minstens 1)? (Y/N) ");
-                strAnswer = Console.ReadLine().ToUpper();
+            {                  
 
                 strTitel = title();
                 strUitgever = Uitgever();                
@@ -23,8 +23,16 @@ namespace classes_opdracht3
                 CD cd = new CD(strTitel, strUitgever);
                 cden.Add(cd);
                 intAantal++;
+                
+                Console.Clear();
 
+                Console.Write("Wilt u een liedje toevoegen aan de CD? (Y/N) ");
+                strAnswer = Console.ReadLine().ToUpper();
+                
             } while (strAnswer == "Y");
+
+            Console.Clear();
+
             Eind_Product_Tonen(intAantal, cden);
             
         }
@@ -32,7 +40,10 @@ namespace classes_opdracht3
         private static void Eind_Product_Tonen(int intAantal, List<CD> cden)
         {
             Console.WriteLine($"Het totaal aantal liedjes op de cd is: {intAantal}");
-            foreach CD liedje in cden{ }
+            foreach (CD liedje in cden)
+            {
+                Console.WriteLine(liedje.getData());
+            }
 
             Console.ReadLine();
         }
